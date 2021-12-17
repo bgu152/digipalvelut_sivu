@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Venekuomut kotisivu</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:wght@300;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- This is the navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">Etusivu</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="picker.html">Tilaa kuomu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="yritys.html">Yritys</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link" href="yhteystiedot.html">Yhteystiedot</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+        <div class="bg-light p-5 rounded-lg m-3">
+            <h1 class="display-4">Tarjouspyyntö</h1>
+
+            <p> Valitse kuomun väri ja täytä veneesi tiedot</p>
+            <hr class="my-4">
+            <div>
+                <form id="tilaus">
+
+                    <div class="form-group">
+                        <label>Nimi</label>
+                        <br>
+                        <input type="text" id="nimi">
+                        <br>
+                        <br>
+                        <label>Sähköposti</label>
+                        <br>
+                        <input  id="sahkoposti">
+                        <br>
+                        <br>
+                        <label>Veneen merkki ja malli</label>                
+                        
+
+                        <br>
+                        <input type="text" id="merkkimalli">
+                        <div>
+                            <br>
+                            <label>Kuomun väri</label>
+                            <select class="form-select" aria-label="Default select example" id="kuomuvalinta">
+                                <option selected>Valitse kuomun väri</option>
+                                <option value="punainen">Punainen</option>
+                                <option value="sininen">Sininen</option>
+                                <option value="keltainen">Keltainen</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="btn btn-primary btn-lg" role="button" id="tarjouspyynto">Tee tarjouspyyntö</div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div id="app"></div>
+    </div>
+
+    <div class="embed-responsive embed-responsive-4by3 d-flex align-items-center justify-content-center">
+
+        <img src="./pickerImages/pickerBase.png" alt="Kuva veneestä jonka kuomu voidaan valita" id="kuomukuva">
+
+    </div>
+
+
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <!-- jQuery UI tyylit -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/sunny/jquery-ui.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#kuomuvalinta").change(function () {
+                if ($("#kuomuvalinta").val() == "punainen") {
+                    $("#kuomukuva").attr("src", "./pickerImages/picker_pressu1_red.png")
+                }
+                if ($("#kuomuvalinta").val() == "sininen") {
+                    $("#kuomukuva").attr("src", "./pickerImages/picker_pressu1_blue.png")
+                }
+
+                if ($("#kuomuvalinta").val() == "keltainen") {
+                    $("#kuomukuva").attr("src", "./pickerImages/picker_pressu1_yellow.png")
+                }
+
+            })
+
+            $("#tarjouspyynto").click(function(){
+                alert("Tarjouspyyntö lähetetty");
+                $("#nimi").val("");
+                $("#sahkoposti").val("") ;
+                $("#merkkimalli").val("");
+
+            })
+
+
+
+
+        })
+    </script>
+
+
+</body>
+
+</html>
